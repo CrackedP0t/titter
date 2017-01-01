@@ -24,8 +24,9 @@ local titter = function(t, k1)
 				end
 
 				if not retKey then
+					local oldTable = currentNode.table
 					currentNode = currentNode.prevNode
-					return true, not (currentNode or _empty).key
+					return true, not (currentNode or _empty).key, not next(oldTable)
 				end
 
 				currentNode.key, currentNode.value = next(currentNode.table, currentNode.key)
